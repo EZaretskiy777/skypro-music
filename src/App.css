@@ -739,6 +739,10 @@ body {
   margin-right: 15px;
 }
 
+.filter__button-group {
+  position: relative;
+}
+
 .filter__button {
   font-style: normal;
   font-weight: 400;
@@ -749,7 +753,7 @@ body {
   padding: 6px 20px;
 }
 
-.filter__button:not(:last-child) {
+.filter__button-group:not(:last-child) {
   margin-right: 10px;
 }
 
@@ -1319,4 +1323,45 @@ body {
 
 .volume__progress-line {
   width: 109px;
+}
+
+.display_none {
+  display: none;
+}
+
+.filter__button-select {
+  position: absolute;
+  z-index: 1;
+}
+
+.filter__dropdown {
+  position: absolute;
+}
+
+.filter__dropdown {
+  margin-top: 10px;
+  width: 248px;
+  max-height: 305px;
+  background-color: green;
+  -webkit-box-sizing: border-box;
+  padding: 34px;
+  gap: 10px;
+  border-radius: 12px;
+  background: #313131;
+  overflow-y: scroll;
+}
+
+.filter__list-element {
+  color: #fff;
+  font-variant-numeric: lining-nums proportional-nums;
+  font-family: StratosSkyeng;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 120% */
+}
+
+.filter__list-element:hover {
+  color: #b672ff;
+  text-decoration-line: underline;
 }
