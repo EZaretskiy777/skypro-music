@@ -751,10 +751,25 @@ body {
   border: 1px solid #ffffff;
   border-radius: 60px;
   padding: 6px 20px;
+  background-color: #000000;
+  color: #fff;
+}
+
+.filter__button:active {
+  color: #ad61ff;
+  border-color: #ad61ff;
 }
 
 .filter__button-group:not(:last-child) {
   margin-right: 10px;
+}
+
+.filter__button:hover {
+  border-color: #d9b6ff;
+  color: #d9b6ff;
+  cursor: pointer;
+  border-radius: 60px;
+  border: 1px solid var(--palette-purple-40, #d9b6ff);
 }
 
 .content__title {

@@ -8,7 +8,9 @@ export const FilterButton = ({ text, list }) => {
       <button
         class="filter__button button-author _btn-text"
         onClick={() => setIsOpen(!isOpen)}
-        onBlur={() => setIsOpen(!isOpen)}
+        onBlur={() => {
+          if (isOpen) setIsOpen(!isOpen);
+        }}
       >
         {text}
       </button>
