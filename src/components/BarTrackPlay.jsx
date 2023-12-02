@@ -1,17 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 
-export function BarTrackPlay({ track, author }) {
-  const [author1, setAuthor] = useState(null);
-  const [track1, setTrack] = useState(null);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setAuthor(author);
-      setTrack(track);
-    }, 5000);
-  });
-
+export function BarTrackPlay({ track, author, loading }) {
   return (
     <div class="player__track-play track-play">
       <div class="track-play__contain">
@@ -21,14 +11,22 @@ export function BarTrackPlay({ track, author }) {
           </svg>
         </div>
         <div class="track-play__author">
-          <a class="track-play__author-link" href="http://">
-            {track1 || <Skeleton height={16} width={100} />}
-          </a>
+          {loading ? (
+            <Skeleton height={16} width={100} />
+          ) : (
+            <a class="track-play__author-link" href="http://">
+              {track}
+            </a>
+          )}
         </div>
         <div class="track-play__album">
-          <a class="track-play__album-link" href="http://">
-            {author1 || <Skeleton height={16} width={100} />}
-          </a>
+          {loading ? (
+            <Skeleton height={16} width={100} />
+          ) : (
+            <a class="track-play__album-link" href="http://">
+              {author}
+            </a>
+          )}
         </div>
       </div>
 

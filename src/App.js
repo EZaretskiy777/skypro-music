@@ -9,8 +9,18 @@ import { PlaylistItem } from "./components/PlaylistItem";
 import { Search } from "./components/Search";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { PlaylistItemSkeleton } from "./components/PlaylistItemSkeleton";
+import { React, useEffect, useState } from "react";
+import { tracks } from "./utils/data";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  });
+
   return (
     <SkeletonTheme baseColor="#202020" highlightColor="#444">
       <div class="wrapper">
@@ -27,84 +37,15 @@ function App() {
               <div class="centerblock__content">
                 <ContentHeader />
                 <div class="content__playlist playlist">
-                  <PlaylistItem
-                    title="Guilt"
-                    author="Nero"
-                    album="Welcome Reality"
-                    track_time="4:44"
-                  />
-
-                  <PlaylistItem
-                    title="Elektro"
-                    author="Dynoro, Outwork, Mr. Gee"
-                    album="Elektro"
-                    track_time="2:22"
-                  />
-
-                  <PlaylistItem
-                    title="I’m Fire"
-                    author="Ali Bakgor"
-                    album="I’m Fire"
-                    track_time="2:22"
-                  />
-
-                  <PlaylistItem
-                    title="Non Stop"
-                    author="Стоункат, Psychopath"
-                    album="Non Stop"
-                    track_time="4:12"
-                  />
-
-                  <PlaylistItem
-                    title="Run Run"
-                    author="Jaded, Will Clarke, AR/CO"
-                    album="Run Run"
-                    track_time="2:54"
-                  />
-
-                  <PlaylistItem
-                    title="Eyes on Fire"
-                    title_span="(Zeds Dead Remix)"
-                    author="Blue Foundation, Zeds Dead"
-                    album="Eyes on Fire"
-                    track_time="5:20"
-                  />
-
-                  <PlaylistItem
-                    title="Mucho Bien"
-                    title_span="(Hi Profile Remix)"
-                    author="Blue Foundation, Zeds Dead"
-                    album="Eyes on Fire"
-                    track_time="5:20"
-                  />
-
-                  <PlaylistItem
-                    title="Knives n Cherries"
-                    author="minthaze"
-                    album="Captivating"
-                    track_time="1:48"
-                  />
-
-                  <PlaylistItem
-                    title="Knives n Cherries"
-                    author="minthaze"
-                    album="Captivating"
-                    track_time="1:48"
-                  />
-
-                  <PlaylistItem
-                    title="How Deep Is Your Love"
-                    author="Calvin Harris, Disciples"
-                    album="How Deep Is Your Love"
-                    track_time="3:32"
-                  />
-
-                  <PlaylistItem
-                    title="Morena"
-                    author="Tom Boxer"
-                    album="Soundz Made in Romania"
-                    track_time="3:36"
-                  />
+                  {tracks.map((el) => (
+                    <PlaylistItem
+                      title={el.title}
+                      author={el.author}
+                      album={el.album}
+                      track_time={el.track_time}
+                      loading={loading}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
@@ -150,7 +91,7 @@ function App() {
               </div>
             </div>
           </main>
-          <Bar />
+          <Bar loading={loading} />
           <footer class="footer"></footer>
         </div>
       </div>

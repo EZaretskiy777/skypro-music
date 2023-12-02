@@ -1,7 +1,7 @@
 import React from "react";
 import { BarTrackPlay } from "./BarTrackPlay";
 
-export const Bar = () => {
+export const Bar = ({ loading }) => {
   return (
     <div class="bar">
       <div class="bar__content">
@@ -36,7 +36,7 @@ export const Bar = () => {
               </div>
             </div>
 
-            <BarTrackPlay track="Ты та..." author="Баста" />
+            <BarTrackPlay track="Ты та..." author="Баста" loading={loading} />
           </div>
           <div class="bar__volume-block volume">
             <div class="volume__content">
