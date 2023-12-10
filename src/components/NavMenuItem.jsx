@@ -1,11 +1,10 @@
 import React from "react";
+import * as S from "./Styles"
 
 export const NavMenuItem = ({ text, href }) => {
   return (
-    <li class="menu__item">
-      <a href={href} class="menu__link">
-        {text}
-      </a>
-    </li>
+    <S.MenuItem>
+      <S.MenuLink href={href}>{text}</S.MenuLink>
+    </S.MenuItem>
   );
 };

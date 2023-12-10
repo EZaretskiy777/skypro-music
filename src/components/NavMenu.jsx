@@ -1,14 +1,15 @@
 import React from "react";
 import { NavMenuItem } from "./NavMenuItem";
+import * as S from "./Styles";
 
 export const NavMenu = () => {
   return (
-    <div class="nav__menu menu">
-      <ul class="menu__list">
-        <NavMenuItem text="Главное" href="#"/>
-        <NavMenuItem text="Мой плейлист" href="#"/>
-        <NavMenuItem text="Войти" href="../signin.html"/>
-      </ul>
-    </div>
+    <S.MenuNav>
+      <S.MenuList>
+        <NavMenuItem text="Главное" href="#" />
+        <NavMenuItem text="Мой плейлист" href="#" />
+        <NavMenuItem text="Войти" href="../signin.html" />
+      </S.MenuList>
+    </S.MenuNav>
   );
 };

@@ -1,9 +1,10 @@
 import React from "react";
+import * as S from "./Styles";
 
 export const NavLogo = () => {
   return (
-    <div class="nav__logo logo">
-      <img class="logo__image" src="img/logo.png" alt="logo" />
-    </div>
+    <S.NavLogo class="nav__logo">
+      <S.NavImg class="logo__image" src="img/logo.png" alt="logo" />
+    </S.NavLogo>
   );
 };

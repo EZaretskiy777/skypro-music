@@ -1,5 +1,6 @@
 import React from "react";
+import * as S from "./Styles";
 
 export function BurgerLine() {
-  return <span class="burger__line"></span>;
+  return <S.BurgerLine></S.BurgerLine>;
 }

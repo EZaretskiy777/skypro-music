@@ -1,17 +1,13 @@
 import React from "react";
+import * as S from "./Styles";
 
 export const Search = () => {
   return (
-    <div class="centerblock__search search">
-      <svg class="search__svg">
+    <S.CenterblockSearch>
+      <S.SearchSvg>
         <use href="img/icon/sprite.svg#icon-search"></use>
-      </svg>
-      <input
-        class="search__text"
-        type="search"
-        placeholder="Поиск"
-        name="search"
-      />
-    </div>
+      </S.SearchSvg>
+      <S.SearchText type="search" placeholder="Поиск" name="search" />
+    </S.CenterblockSearch>
   );
 };

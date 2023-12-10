@@ -1,28 +1,28 @@
 import React, { useState } from "react";
+import * as S from "./Styles";
 
 export const FilterButton = ({ text, list }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div class="filter__button-group">
-      <button
-        class="filter__button button-author _btn-text"
+    <S.FilterButtonGroup>
+      <S.FilterButton
         onClick={() => setIsOpen(!isOpen)}
         onBlur={() => {
           if (isOpen) setIsOpen(!isOpen);
         }}
       >
         {text}
-      </button>
+      </S.FilterButton>
       {isOpen && (
-        <div class="filter__dropdown">
+        <S.FilterDropdown>
           <div class="filter__list">
             {list.map((el) => (
-              <div class="filter__list-element">{el}</div>
+              <S.FilterListElement>{el}</S.FilterListElement>
             ))}
           </div>
-        </div>
+        </S.FilterDropdown>
       )}
-    </div>
+    </S.FilterButtonGroup>
   );
 };

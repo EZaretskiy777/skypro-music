@@ -1,61 +1,58 @@
 import React from "react";
 import { BarTrackPlay } from "./BarTrackPlay";
+import * as S from "./Styles";
 
 export const Bar = ({ loading }) => {
   return (
-    <div class="bar">
-      <div class="bar__content">
-        <div class="bar__player-progress"></div>
-        <div class="bar__player-block">
-          <div class="bar__player player">
-            <div class="player__controls">
-              <div class="player__btn-prev">
-                <svg class="player__btn-prev-svg" alt="prev">
+    <S.Bar>
+      <S.BarContent>
+        <S.BarPlayerProgress></S.BarPlayerProgress>
+        <S.BarPlayerBlock>
+          <S.BarPlayer>
+            <S.PlayerControls>
+              <S.PlayerBtnPrev>
+                <S.PlayerBtnPrevSvg alt="prev">
                   <use href="img/icon/sprite.svg#icon-prev"></use>
-                </svg>
-              </div>
-              <div class="player__btn-play _btn">
-                <svg class="player__btn-play-svg" alt="play">
+                </S.PlayerBtnPrevSvg>
+              </S.PlayerBtnPrev>
+              <S.PlayerBtnPlay>
+                <S.PlayerBtnPlaySvg alt="play">
                   <use href="img/icon/sprite.svg#icon-play"></use>
-                </svg>
-              </div>
-              <div class="player__btn-next">
-                <svg class="player__btn-next-svg" alt="next">
+                </S.PlayerBtnPlaySvg>
+              </S.PlayerBtnPlay>
+              <S.PlayerBtnNext>
+                <S.PlayerBtnNextSvg alt="next">
                   <use href="img/icon/sprite.svg#icon-next"></use>
-                </svg>
-              </div>
-              <div class="player__btn-repeat _btn-icon">
-                <svg class="player__btn-repeat-svg" alt="repeat">
+                </S.PlayerBtnNextSvg>
+              </S.PlayerBtnNext>
+              <S.PlayerBtnRepeat class="_btn-icon">
+                <S.PlayerBtnRepeatSvg alt="repeat">
                   <use href="img/icon/sprite.svg#icon-repeat"></use>
-                </svg>
-              </div>
-              <div class="player__btn-shuffle _btn-icon">
-                <svg class="player__btn-shuffle-svg" alt="shuffle">
+                </S.PlayerBtnRepeatSvg>
+              </S.PlayerBtnRepeat>
+              <S.PlayerBtnShuffle class="_btn-icon">
+                <S.PlayerBtnShuffleSvg alt="shuffle">
                   <use href="img/icon/sprite.svg#icon-shuffle"></use>
-                </svg>
-              </div>
-            </div>
+                </S.PlayerBtnShuffleSvg>
+              </S.PlayerBtnShuffle>
+            </S.PlayerControls>
 
             <BarTrackPlay track="Ты та..." author="Баста" loading={loading} />
-          </div>
-          <div class="bar__volume-block volume">
-            <div class="volume__content">
-              <div class="volume__image">
-                <svg class="volume__svg" alt="volume">
+          </S.BarPlayer>
+          <S.BarVolumeBlock class="bar__volume-block">
+            <S.VolumeContent class="volume__content">
+              <S.VolumeImg>
+                <S.VolumeSvg alt="volume">
                   <use href="img/icon/sprite.svg#icon-volume"></use>
-                </svg>
-              </div>
-              <div class="volume__progress _btn">
-                <input
-                  class="volume__progress-line _btn"
-                  type="range"
-                  name="range"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                </S.VolumeSvg>
+              </S.VolumeImg>
+              <S.VolumeProgress class="_btn">
+                <S.VolumeProgressLine class="_btn" type="range" name="range" />
+              </S.VolumeProgress>
+            </S.VolumeContent>
+          </S.BarVolumeBlock>
+        </S.BarPlayerBlock>
+      </S.BarContent>
+    </S.Bar>
   );
 };

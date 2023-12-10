@@ -1,16 +1,17 @@
 import React from "react";
+import * as S from "./Styles";
 
 export const ContentHeader = () => {
   return (
-    <div class="content__title playlist-title">
-      <div class="playlist-title__col col01">Трек</div>
-      <div class="playlist-title__col col02">ИСПОЛНИТЕЛЬ</div>
-      <div class="playlist-title__col col03">АЛЬБОМ</div>
-      <div class="playlist-title__col col04">
-        <svg class="playlist-title__svg" alt="time">
+    <S.ContentTitle>
+      <S.PlaylistTitleCol1>Трек</S.PlaylistTitleCol1>
+      <S.PlaylistTitleCol2>ИСПОЛНИТЕЛЬ</S.PlaylistTitleCol2>
+      <S.PlaylistTitleCol3>АЛЬБОМ</S.PlaylistTitleCol3>
+      <S.PlaylistTitleCol4>
+        <S.PlaylistTitleSvg alt="time">
           <use href="img/icon/sprite.svg#icon-watch"></use>
-        </svg>
-      </div>
-    </div>
+        </S.PlaylistTitleSvg>
+      </S.PlaylistTitleCol4>
+    </S.ContentTitle>
   );
 };
