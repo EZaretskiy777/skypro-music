@@ -1,9 +1,7 @@
-import { React, useState } from "react";
-import * as S from "./Styles";
+import React from "react";
+import * as S from "./styles";
 
 export const TrackPlay = ({ author, album }) => {
-  const [author1, authorSet] = useState(null);
-
   return (
     <S.PlayerTrackPlay>
       <S.TrackPlayContain>

@@ -1,7 +1,7 @@
-import { React, useEffect, useState } from "react";
+import React from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import * as S from "./Styles";
+import * as S from "./styles";
 
 export const PlaylistItem = ({
   title,

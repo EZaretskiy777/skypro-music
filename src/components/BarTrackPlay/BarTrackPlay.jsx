@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Skeleton from "react-loading-skeleton";
-import * as S from "./Styles";
+import * as S from "./styles";
 
 export function BarTrackPlay({ track, author, loading }) {
   return (

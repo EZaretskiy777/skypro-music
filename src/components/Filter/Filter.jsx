@@ -1,9 +1,9 @@
 import React from "react";
-import { FilterButton } from "./FilterButton";
-import authors from "../authors.json";
-import years from "../years.json";
-import genre from "../genre.json";
-import * as S from "./Styles";
+import { FilterButton } from "../FilterButton/FilterButton";
+import authors from "../../authors.json";
+import years from "../../years.json";
+import genre from "../../genre.json";
+import * as S from "./styles";
 
 export const Filter = () => {
   return (

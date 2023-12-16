@@ -1,6 +1,6 @@
 import React from "react";
-import { BarTrackPlay } from "./BarTrackPlay";
-import * as S from "./Styles";
+import { BarTrackPlay } from "../BarTrackPlay/BarTrackPlay";
+import * as S from "./styles";
 
 export const Bar = ({ loading }) => {
   return (

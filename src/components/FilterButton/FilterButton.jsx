@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as S from "./Styles";
+import * as S from "./styles";
 
 export const FilterButton = ({ text, list }) => {
   const [isOpen, setIsOpen] = useState(false);

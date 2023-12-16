@@ -1,7 +1,7 @@
-import { BurgerLine } from "./BurgerLine.jsx";
+import { BurgerLine } from "../BurgerLine/BurgerLine.jsx";
 import { React, useState } from "react";
-import { NavMenu } from "./NavMenu.jsx";
-import * as S from "./Styles.js";
+import { NavMenu } from "../NavMenu/NavMenu.jsx";
+import * as S from "./styles.js";
 
 export const BurgerNav = () => {
   const [showMenu, setShowMenu] = useState(true);

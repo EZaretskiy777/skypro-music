@@ -1,6 +1,6 @@
 import React from "react";
-import { NavMenuItem } from "./NavMenuItem";
-import * as S from "./Styles";
+import { NavMenuItem } from "../NavMenuItem/NavMenuItem";
+import * as S from "./styles";
 
 export const NavMenu = () => {
   return (
