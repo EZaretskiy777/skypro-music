@@ -8,7 +8,7 @@ export function BarTrackPlay({ track, author, loading }) {
       <S.BarTrackPlayContain>
         <S.BarTrackPlayImg>
           <S.BarTrackPlaySvg alt="music">
-            <use href="img/icon/sprite.svg#icon-note"></use>
+            <use href="../img/icon/sprite.svg#icon-note"></use>
           </S.BarTrackPlaySvg>
         </S.BarTrackPlayImg>
         <S.BarTrackPlayAuthor>
@@ -34,12 +34,12 @@ export function BarTrackPlay({ track, author, loading }) {
       <S.BarTrackPlayLikeDis>
         <S.BarTrackPlayLike class="_btn-icon">
           <S.BarTrackPlayLikeSvg class="track-play__like-svg" alt="like">
-            <use href="img/icon/sprite.svg#icon-like"></use>
+            <use href="../img/icon/sprite.svg#icon-like"></use>
           </S.BarTrackPlayLikeSvg>
         </S.BarTrackPlayLike>
         <S.BarTrackPlayDislike class="_btn-icon">
           <S.BarTrackPlayDislikeSvg alt="dislike">
-            <use href="img/icon/sprite.svg#icon-dislike"></use>
+            <use href="../img/icon/sprite.svg#icon-dislike"></use>
           </S.BarTrackPlayDislikeSvg>
         </S.BarTrackPlayDislike>
       </S.BarTrackPlayLikeDis>

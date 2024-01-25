@@ -17,7 +17,7 @@ export const PlaylistItem = ({
         <S.TrackTitle>
           <S.TrackTitleImage>
             <S.TrackTitleSvg alt="music">
-              <use href="img/icon/sprite.svg#icon-note"></use>
+              <use href="../img/icon/sprite.svg#icon-note"></use>
             </S.TrackTitleSvg>
           </S.TrackTitleImage>
           <div class="track__title-text">
