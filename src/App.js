@@ -1,10 +1,9 @@
-import { SkeletonTheme } from "react-loading-skeleton";
 import { React, useEffect, useState } from "react";
-import GlobalStyle from "./GlobalStyle";
-import { Wrapper } from "./components/Wrapper/Wrapper";
+import { AppRoutes } from "./routes";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const user = localStorage.getItem("user");
 
   useEffect(() => {
     setTimeout(() => {
@@ -12,14 +11,7 @@ function App() {
     }, 5000);
   });
 
-  return (
-    <>
-      <GlobalStyle />
-      <SkeletonTheme baseColor="#202020" highlightColor="#444">
-        <Wrapper loading={loading} />
-      </SkeletonTheme>
-    </>
-  );
+  return <AppRoutes loading={loading} user={user} />;
 }
 
 export default App;

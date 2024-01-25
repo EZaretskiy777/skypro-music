@@ -3,16 +3,20 @@ import { Search } from "../Search/Search";
 import { Filter } from "../Filter/Filter";
 import { ContentHeader } from "../ContentHeader/ContentHeader";
 import { PlaylistItem } from "../PlaylistItem/PlaylistItem";
-import { tracks } from "../../utils/data";
 import * as S from "./styles";
 
-export const MainCenterblock = ({ loading }) => {
+export const MainCenterblock = ({
+  loading,
+  tracks,
+  main = true,
+  title = "Треки",
+}) => {
   return (
     <S.MainCenterblock>
       <Search />
-      <S.CenterblockH2 class="centerblock__h2">Треки</S.CenterblockH2>
-      <Filter />
-      <S.CenterblockContent class="centerblock__content">
+      <S.CenterblockH2>{title}</S.CenterblockH2>
+      {main ? <Filter /> : ""}
+      <S.CenterblockContent>
         <ContentHeader />
         <S.ContentPlaylist>
           {tracks.map((el) => (
