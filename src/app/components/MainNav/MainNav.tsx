@@ -10,7 +10,7 @@ const MainNav = () => {
           width={250}
           height={170}
           className={styles.logo__image}
-          src="/logo.png"
+          src="/img/logo.png"
           alt={"logo"}
         />
       </div>

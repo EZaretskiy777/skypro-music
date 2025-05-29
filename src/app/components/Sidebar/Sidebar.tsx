@@ -21,7 +21,7 @@ const Bar = () => {
             <Link className={styles.sidebar__lin} href="#">
               <Image
                 className={styles.sidebar__im}
-                src="/playlist01.png"
+                src="/img/playlist01.png"
                 alt="day's playlist"
                 width={250}
                 height={170}
@@ -32,7 +32,7 @@ const Bar = () => {
             <Link className={styles.sidebar__lin} href="#">
               <Image
                 className={styles.sidebar__im}
-                src="/playlist02.png"
+                src="/img/playlist02.png"
                 alt="day's playlist"
                 width={250}
                 height={170}
@@ -43,7 +43,7 @@ const Bar = () => {
             <Link className={styles.sidebar__lin} href="#">
               <Image
                 className={styles.sidebar__im}
-                src="/playlist03.png"
+                src="/img/playlist03.png"
                 alt="day's playlist"
                 width={250}
                 height={170}
