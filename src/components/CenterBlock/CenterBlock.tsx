@@ -3,6 +3,7 @@ import classNames from "classnames";
 import Link from "next/link";
 import TrackList from "@components/TrackList/TrackList";
 import Track from "@components/Track/Track";
+import Filters from "@components/Filters/Filters";
 
 const CenterBlock = () => {
   return (
@@ -19,12 +20,7 @@ const CenterBlock = () => {
         />
       </div>
       <h2 className={styles.centerblock__h2}>Треки</h2>
-      <div className={styles.centerblock__filter}>
-        <div className={styles.filter__title}>Искать по:</div>
-        <div className={styles.filter__button}>исполнителю</div>
-        <div className={styles.filter__button}>году выпуска</div>
-        <div className={styles.filter__button}>жанру</div>
-      </div>
+      <Filters />
       <div className={styles.centerblock__content}>
         <div className={styles.content__title}>
           <div className={classNames(styles.playlistTitle__col, styles.col01)}>
@@ -42,39 +38,7 @@ const CenterBlock = () => {
             </svg>
           </div>
         </div>
-        <TrackList>
-          <Track
-            title="Guilt"
-            author="Nero"
-            album="Welcome Reality"
-            time="4:44"
-          />
-          <Track
-            title="Elektro"
-            author="Dynoro, Outwork, Mr. Gee"
-            album="Elektro"
-            time="2:22"
-          />
-          <Track
-            title="I’m Fire"
-            author="Ali Bakgor"
-            album="I’m Fire"
-            time="2:22"
-          />
-          <Track
-            title="Non Stop"
-            author="Стоункат, Psychopath"
-            album="Non Stop"
-            time="4:12"
-          />
-          <Track
-            title="Run Run"
-            subTitle="(feat. AR/CO)"
-            author="Стоункат, Psychopath"
-            album="Non Stop"
-            time="4:12"
-          />
-        </TrackList>
+        <TrackList />
       </div>
     </div>
   );
