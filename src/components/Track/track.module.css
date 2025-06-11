@@ -1,3 +1,21 @@
+@keyframes glowPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0px rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+}
+
 .playlist__item {
   width: 100%;
   display: block;
@@ -126,4 +144,10 @@
   line-height: 24px;
   text-align: right;
   color: #696969;
+}
+
+.track__titleImg {
+  animation: glowPulse 2s ease-in-out infinite;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 50%;
 }
