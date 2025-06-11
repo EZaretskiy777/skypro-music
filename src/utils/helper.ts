@@ -1,5 +1,5 @@
 import { data } from "../data";
-import { TrackType } from "../sharedTypes/sharedTypes";
+import { TrackType } from "../sharedTypes/types";
 
 export function dateFormat(date: string) {
   const options: Intl.DateTimeFormatOptions = {
