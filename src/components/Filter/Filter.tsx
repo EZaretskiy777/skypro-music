@@ -1,6 +1,6 @@
 import styles from "./Filter.module.css";
 import { getUniqueValuesByKey, dateFormat } from "@utils/helper";
-import { TrackType } from "@sharedTypes/sharedTypes";
+import { TrackType } from "@/sharedTypes/types";
 import { data } from "@/data";
 
 type FilterProps = {
