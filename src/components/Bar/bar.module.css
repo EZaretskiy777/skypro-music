@@ -359,3 +359,8 @@
     cursor: pointer;
   }
 }
+
+.player__btnRepeat_on,
+.player__btnShuffle_on {
+  stroke: #ffffff;
+}

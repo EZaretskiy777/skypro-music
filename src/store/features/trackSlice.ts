@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, current, PayloadAction } from "@reduxjs/toolkit";
 import { TrackType } from "@/sharedTypes/types";
 
 type TrackState = {
@@ -7,6 +7,9 @@ type TrackState = {
     track: TrackType | null;
     isPlaying: boolean;
   };
+  playList: TrackType[];
+  shuffledPlayList: TrackType[];
+  isShuffle: boolean;
 };
 
 const initialState: TrackState = {
@@ -15,6 +18,9 @@ const initialState: TrackState = {
     track: null,
     isPlaying: false,
   },
+  playList: [],
+  shuffledPlayList: [],
+  isShuffle: false,
 };
 
 const trackSlice = createSlice({
@@ -28,6 +34,13 @@ const trackSlice = createSlice({
       state.currentTrack.track = action.payload;
       state.currentTrack.isPlaying = true;
     },
+    setCurrentPlaylist: (state, action: PayloadAction<TrackType[]>) => {
+      state.playList = action.payload;
+      state.shuffledPlayList = [...state.playList].sort(
+        () => Math.random() - 0.5
+      );
+    },
+
     togglePlay: (state, action: PayloadAction<boolean | undefined>) => {
       state.currentTrack.isPlaying =
         action.payload === undefined
@@ -39,9 +52,48 @@ const trackSlice = createSlice({
         state.currentTrack.isPlaying = false;
       }
     },
+    setNextTrack(state) {
+      const playList = state.isShuffle
+        ? state.shuffledPlayList
+        : state.playList;
+      const currentIndex = playList.findIndex(
+        (track) => track._id === state.currentTrack?.track?._id
+      );
+      const nextIndex = currentIndex + 1;
+
+      if (!playList[nextIndex]) {
+        state.currentTrack.isPlaying = false;
+      }
+      state.currentTrack.track = playList[nextIndex]
+        ? playList[nextIndex]
+        : state.currentTrack.track;
+    },
+    setPrevTrack(state) {
+      const playList = state.isShuffle
+        ? state.shuffledPlayList
+        : state.playList;
+      const currentIndex = playList.findIndex(
+        (track) => track._id === state.currentTrack?.track?._id
+      );
+      const nextIndex = currentIndex - 1;
+      state.currentTrack.track = playList[nextIndex]
+        ? playList[nextIndex]
+        : state.currentTrack.track;
+    },
+    toggleShuffle: (state) => {
+      state.isShuffle = !state.isShuffle;
+    },
   },
 });
 
-export const { setTracks, setCurrentTrack, togglePlay, stopPlayback } =
-  trackSlice.actions;
+export const {
+  setTracks,
+  setCurrentTrack,
+  togglePlay,
+  stopPlayback,
+  setCurrentPlaylist,
+  setNextTrack,
+  setPrevTrack,
+  toggleShuffle,
+} = trackSlice.actions;
 export const trackSliceReducer = trackSlice.reducer;
