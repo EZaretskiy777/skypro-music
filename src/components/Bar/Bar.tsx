@@ -11,7 +11,7 @@ import {
   setPrevTrack,
   toggleShuffle,
 } from "@/store/features/trackSlice";
-import { formatTime } from "@utils/helper";
+import { getTimePanel } from "@utils/helper";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
 const Bar = () => {
@@ -264,13 +264,7 @@ const Bar = () => {
             </div>
             <div className={styles.bar__rightBlock}>
               <div className={styles.bar__timeBlock}>
-                <div className={styles.time__current}>
-                  {formatTime(currentTime)}
-                </div>
-                /
-                <div className={styles.time__duration}>
-                  {formatTime(audioRef.current?.duration || 0)}
-                </div>
+                {getTimePanel(currentTime, audioRef.current?.duration || 0)}
               </div>
               <div className={styles.bar__volumeBlock}>
                 <div className={styles.volume__content}>
