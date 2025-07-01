@@ -262,25 +262,36 @@ const Bar = () => {
                 </div>
               </div>
             </div>
-            <div className={styles.bar__volumeBlock}>
-              <div className={styles.volume__content}>
-                <div className={styles.volume__image}>
-                  <svg className={styles.volume__svg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
-                  </svg>
+            <div className={styles.bar__rightBlock}>
+              <div className={styles.bar__timeBlock}>
+                <div className={styles.time__current}>
+                  {formatTime(currentTime)}
                 </div>
-                <div
-                  className={classNames(styles.volume__progress, styles.btn)}
-                >
-                  <input
-                    className={classNames(
-                      styles.volume__progressLine,
-                      styles.btn
-                    )}
-                    type="range"
-                    name="range"
-                    onChange={onVolumeChange}
-                  />
+                /
+                <div className={styles.time__duration}>
+                  {formatTime(audioRef.current?.duration || 0)}
+                </div>
+              </div>
+              <div className={styles.bar__volumeBlock}>
+                <div className={styles.volume__content}>
+                  <div className={styles.volume__image}>
+                    <svg className={styles.volume__svg}>
+                      <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
+                    </svg>
+                  </div>
+                  <div
+                    className={classNames(styles.volume__progress, styles.btn)}
+                  >
+                    <input
+                      className={classNames(
+                        styles.volume__progressLine,
+                        styles.btn
+                      )}
+                      type="range"
+                      name="range"
+                      onChange={onVolumeChange}
+                    />
+                  </div>
                 </div>
               </div>
             </div>

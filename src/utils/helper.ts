@@ -13,9 +13,10 @@ export const dateFormat = (date: string) => {
 
 export const formatTime = (time: number) => {
   const minutes = Math.floor(time / 60);
-  const inputSeconds = Math.floor(time & 60);
-  const outputSeconds = inputSeconds < 10 ? `0${inputSeconds}` : inputSeconds;
-  return `${minutes}:${outputSeconds}`;
+  const seconds = Math.floor(time % 60);
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+  return `${formattedMinutes}:${formattedSeconds}`;
 };
 
 export const getTimePanel = (currentTime: number, totalTime: number) => {
