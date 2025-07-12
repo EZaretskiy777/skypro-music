@@ -56,6 +56,11 @@
   background-color: #3f007d;
 }
 
+.modal__btnEnter:disabled {
+  background-color: #d0cece;
+  cursor: not-allowed;
+}
+
 .modal__btnSignup:hover {
   background-color: #f4f5f6;
 }

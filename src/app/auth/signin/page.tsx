@@ -1,11 +1,13 @@
 "use client";
 
+import React from "react";
 import styles from "./signin.module.css";
 import classNames from "classnames";
 import Link from "next/link";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { urerSignIn } from "@/services/auth/authApi";
-import { useRouter } from "next/router";
+import { useForm, SubmitHandler, set } from "react-hook-form";
+import { urerSignIn, userGetToken } from "@/services/auth/authApi";
+import { useRouter } from "next/navigation";
+import { Axios, AxiosError } from "axios";
 
 type Inputs = {
   login: string;
@@ -13,6 +15,10 @@ type Inputs = {
 };
 
 export default function Signin() {
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [errorMessage, setErrorMessage] = React.useState<string | null>(null);
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -21,22 +27,51 @@ export default function Signin() {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = () => {
+    setIsLoading(true);
+    setErrorMessage(null);
     urerSignIn({ email: watch("login"), password: watch("password") })
       .then((res) => {
-        if (res.status === 200) {
-          localStorage.setItem("token", res.data.data.token);
-          useRouter().push("/music/main");
+        if (res.status.toString().startsWith("2")) {
+          localStorage.setItem("email", res.data.email);
+          localStorage.setItem("username", res.data.username);
+          localStorage.setItem("_id", res.data._id.toString());
+          userGetToken({
+            email: watch("login"),
+            password: watch("password"),
+          }).then((token) => {
+            localStorage.setItem("token", token.access);
+          });
+          router.push("/music/main");
         }
-        if (res.status === 401) {
+        if (res.status.toString().startsWith("4")) {
           alert("Неверный логин или пароль");
         }
-        if (res.status === 500) {
+        if (res.status.toString().startsWith("5")) {
           alert("Ошибка сервера. Пожалуйста, попробуйте позже.");
         }
       })
       .catch((error) => {
-        console.error("Ошибка входа:", error);
-        alert("Произошла ошибка при входе. Пожалуйста, попробуйте позже.");
+        if (error instanceof AxiosError) {
+          if (error.response) {
+            console.error("Ошибка:", error);
+            setErrorMessage(error.response?.data?.message);
+          }
+          if (error.request) {
+            console.error("Ошибка запроса:", error.request);
+            setErrorMessage(
+              "Отсутствует ответ от сервера. Пожалуйста, проверьте подключение к интернету."
+            );
+          } else {
+            console.error("Ошибка настройки:", error.message);
+            setErrorMessage("Произошла неизвестная ошибка, попробуйте позже.");
+          }
+        } else {
+          console.error("Неизвестная ошибка:", error);
+          setErrorMessage("Произошла неизвестная ошибка, попробуйте позже.");
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
@@ -78,9 +113,18 @@ export default function Signin() {
         />
         <div className={styles.errorContainer}>{errors.password?.message}</div>
       </div>
-      <button className={styles.modal__btnEnter}>Войти</button>
+      {errorMessage && (
+        <div className={styles.errorContainer}>{errorMessage}</div>
+      )}
+      <button className={styles.modal__btnEnter} disabled={isLoading}>
+        Войти
+      </button>
 
-      <Link href="/auth/signup" className={styles.modal__btnSignup}>
+      <Link
+        href="/auth/signup"
+        className={styles.modal__btnSignup}
+        aria-disabled={isLoading}
+      >
         Зарегистрироваться
       </Link>
     </form>

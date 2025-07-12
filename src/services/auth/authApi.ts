@@ -1,6 +1,13 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
+// type AuthUserType = {
+//   email: string;
+//   password: string;
+//   _id: number;
+//   status: string;
+// };
+
 export const urerSignIn = ({
   email,
   password,
@@ -37,4 +44,26 @@ export const userSignUp = ({
       },
     }
   );
+};
+
+export const userGetToken = ({
+  email,
+  password,
+}: {
+  email: string;
+  password: string;
+}) => {
+  return axios
+    .post(
+      `${BASE_URL}/user/token/`,
+      { email, password },
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    )
+    .then((response) => {
+      return response.data.token;
+    });
 };

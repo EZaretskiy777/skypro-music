@@ -4,6 +4,7 @@ import CenterBlock from "@components/CenterBlock/CenterBlock";
 
 const CategoryPage = () => {
   const { id } = useParams<{ id: string }>();
+  
   return <CenterBlock header={`Треки ${id}`} />;
 };
 

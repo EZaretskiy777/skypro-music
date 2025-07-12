@@ -7,9 +7,10 @@ import Filters from "@components/Filters/Filters";
 
 type CenterBlockProps = {
   header: string;
+  selectionId?: number;
 };
 
-const CenterBlock = ({ header }: CenterBlockProps) => {
+const CenterBlock = ({ header, selectionId }: CenterBlockProps) => {
   return (
     <div className={styles.centerblock}>
       <div className={styles.centerblock__search}>
@@ -42,7 +43,7 @@ const CenterBlock = ({ header }: CenterBlockProps) => {
             </svg>
           </div>
         </div>
-        <TrackList />
+        <TrackList selectionId={selectionId} />
       </div>
     </div>
   );
