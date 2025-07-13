@@ -33,16 +33,12 @@ const MusicLayout = ({ children }: MusicLayoutProps) => {
     fetchTracks();
   }, [dispatch]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <div className={styles.wrapper}>
       <div className={styles.container}>
         <main className={styles.main}>
           <MainNav />
-          {children}
+          {isLoading ? <Loading /> : children}
           <Sidebar />
         </main>
         <Bar />
