@@ -7,36 +7,19 @@ import { TrackType } from "@/sharedTypes/types";
 import { tracksGetAll, tracksGetSelection } from "@/services/tracks/tracksApi";
 import { useAppDispatch } from "@/store/store";
 import { setTracks as storeSetTracks } from "@/store/features/trackSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
 
 type TrackListProps = {
   selectionId?: number;
+  tracks?: TrackType[];
 };
 
 const TrackList = ({ selectionId }: TrackListProps) => {
-  const dispatch = useAppDispatch();
-  const [allTracks, setAllTracks] = useState<TrackType[]>([]);
-  const [tracks, setTracks] = useState<TrackType[]>([]);
-
-  useEffect(() => {
-    const tracksFunc = () => {};
-
-    tracksGetAll()
-      .then((response) => {
-        console.log("response", response);
-        dispatch(storeSetTracks(response));
-        setAllTracks(response);
-        setTracks(response);
-        tracksFunc();
-      })
-      .catch((error) => {
-        console.error("Ошибка при получении треков:", error);
-      });
-
-    if (selectionId) {
-      tracksGetSelection({ id: selectionId });
-    }
-  }, [selectionId]);
-
+  const tracks = useSelector(
+    (state: RootState): TrackType[] => state.tracks.currentTrackList
+  );
+  console.log("tracks1", tracks);
   return (
     <div className={styles.content__playlist}>
       {tracks.map((track: TrackType) => (
@@ -47,6 +30,3 @@ const TrackList = ({ selectionId }: TrackListProps) => {
 };
 
 export default TrackList;
-function dispatch(arg0: void) {
-  throw new Error("Function not implemented.");
-}

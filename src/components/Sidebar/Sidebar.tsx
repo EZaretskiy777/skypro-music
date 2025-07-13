@@ -12,6 +12,7 @@ const Bar = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("username");
     localStorage.removeItem("_id");
+    localStorage.removeItem("token");
     router.push("/auth/signin");
   };
 
