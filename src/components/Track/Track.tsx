@@ -3,12 +3,20 @@
 import Link from "next/link";
 import styles from "./track.module.css";
 import { useAppSelector, useAppDispatch } from "@/store/store";
-import { setCurrentTrack } from "@/store/features/trackSlice";
+import {
+  setCurrentTrack,
+  setCurrentPlaylist,
+} from "@/store/features/trackSlice";
 import { TrackType } from "@/sharedTypes/types";
 import { formatTime } from "@utils/helper";
 import classNames from "classnames";
 
-const Track = (track: TrackType) => {
+type TrackProps = {
+  track: TrackType;
+  playList: TrackType[];
+};
+
+const Track = ({ track, playList }: TrackProps) => {
   const dispatch = useAppDispatch();
   const isPlaying = useAppSelector(
     (state) => state.tracks.currentTrack.isPlaying
@@ -20,11 +28,13 @@ const Track = (track: TrackType) => {
 
   const isCurrentTrack = currentTrack?._id === track._id;
 
+  const handlerClickCurrentTrack = () => {
+    dispatch(setCurrentTrack(track));
+    dispatch(setCurrentPlaylist(playList));
+  };
+
   return (
-    <div
-      className={styles.playlist__item}
-      onClick={() => dispatch(setCurrentTrack(track))}
-    >
+    <div className={styles.playlist__item} onClick={handlerClickCurrentTrack}>
       <div className={styles.playlist__track}>
         <div className={styles.track__title}>
           <div className={styles.track__titleImage}>

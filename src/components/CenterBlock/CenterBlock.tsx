@@ -5,7 +5,12 @@ import TrackList from "@components/TrackList/TrackList";
 import Track from "@components/Track/Track";
 import Filters from "@components/Filters/Filters";
 
-const CenterBlock = () => {
+type CenterBlockProps = {
+  header: string;
+  selectionId?: number;
+};
+
+const CenterBlock = ({ header, selectionId }: CenterBlockProps) => {
   return (
     <div className={styles.centerblock}>
       <div className={styles.centerblock__search}>
@@ -19,7 +24,7 @@ const CenterBlock = () => {
           name="search"
         />
       </div>
-      <h2 className={styles.centerblock__h2}>Треки</h2>
+      <h2 className={styles.centerblock__h2}>{header}</h2>
       <Filters />
       <div className={styles.centerblock__content}>
         <div className={styles.content__title}>
@@ -38,7 +43,7 @@ const CenterBlock = () => {
             </svg>
           </div>
         </div>
-        <TrackList />
+        <TrackList selectionId={selectionId} />
       </div>
     </div>
   );
