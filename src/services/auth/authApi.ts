@@ -55,7 +55,7 @@ export const userGetToken = ({
 }) => {
   return axios
     .post(
-      `${BASE_URL}/user/token/`,
+      `${BASE_URL}/user/token`,
       { email, password },
       {
         headers: {
@@ -64,6 +64,6 @@ export const userGetToken = ({
       }
     )
     .then((response) => {
-      return response.data.token;
+      return response.data;
     });
 };

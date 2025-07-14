@@ -39,6 +39,7 @@ export default function Signin() {
             email: watch("login"),
             password: watch("password"),
           }).then((token) => {
+            console.log("Токен получен:", token);
             localStorage.setItem("token", token.access);
           });
           router.push("/music/main");
