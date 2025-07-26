@@ -19,7 +19,7 @@ const TrackList = ({ selectionId }: TrackListProps) => {
   const tracks = useSelector(
     (state: RootState): TrackType[] => state.tracks.currentTrackList
   );
-  console.log("tracks1", tracks);
+
   return (
     <div className={styles.content__playlist}>
       {tracks.map((track: TrackType) => (
