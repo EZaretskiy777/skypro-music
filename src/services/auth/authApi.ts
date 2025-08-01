@@ -54,15 +54,9 @@ export const userGetToken = ({
     });
 };
 
-export const userRefreshToken = ({
-  email,
-  password,
-}: {
-  email: string;
-  password: string;
-}): Promise<AccessTokenType> => {
+export const userRefreshToken = (refresh: string): Promise<AccessTokenType> => {
   return axios
-    .post(`${BASE_URL}/user/token/refresh`, { email, password })
+    .post(`${BASE_URL}/user/token/refresh`, { refresh })
     .then((response) => {
       return response.data;
     });

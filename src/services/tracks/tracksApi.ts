@@ -14,13 +14,32 @@ export const tracksGetSelection = ({
 }: {
   id: number;
 }): Promise<SelectionType> => {
+  return axios.get(`${BASE_URL}/catalog/selection/${id}/`).then((response) => {
+    return response.data.data;
+  });
+};
+
+export const addLike = (token: string, trackId: string) => {
+  console.log("addLike", token, trackId);
   return axios
-    .get(`${BASE_URL}/catalog/selection/${id}/`, {
+    .post(
+      `${BASE_URL}/catalog/track/${trackId}/favorite/`,
+      {},
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+    .then((res) => res.data);
+};
+
+export const removeLike = (token: string, trackId: string) => {
+  return axios
+    .delete(`${BASE_URL}/catalog/track/${trackId}/favorite/`, {
       headers: {
-        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
       },
     })
-    .then((response) => {
-      return response.data.data;
-    });
+    .then((res) => res.data);
 };

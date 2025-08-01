@@ -4,15 +4,21 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./sidebar.module.css";
 import { useRouter } from "next/navigation";
+import { useAppSelector } from "@/store/store";
+import { clearUser } from "@/store/features/authSlice";
+import { useDispatch } from "react-redux";
 
 const Bar = () => {
+  const dispatch = useDispatch();
   const router = useRouter();
+  const userName = useAppSelector((state) => state.auth.userName);
 
   const handleLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("username");
-    localStorage.removeItem("_id");
-    localStorage.removeItem("token");
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("username");
+    // localStorage.removeItem("_id");
+    // localStorage.removeItem("token");
+    dispatch(clearUser());
     router.push("/auth/signin");
   };
 
@@ -20,7 +26,7 @@ const Bar = () => {
     <div className={styles.main__sidebar}>
       <div className={styles.sidebar__personal}>
         <div onClick={handleLogout}>
-          <p className={styles.sidebar__personalName}>Sergey.Ivanov</p>
+          <p className={styles.sidebar__personalName}>{userName}</p>
           <div className={styles.sidebar__icon}>
             <svg>
               <use xlinkHref="/img/icon/sprite.svg#logout"></use>

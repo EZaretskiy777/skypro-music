@@ -8,13 +8,15 @@ import { useEffect, useState } from "react";
 import { useAppDispatch } from "@/store/store";
 import { tracksGetAll } from "@/services/tracks/tracksApi";
 import { setTracks } from "@/store/features/trackSlice";
-import Loading from "./loading"; // путь к компоненту загрузки
+import Loading from "./loading";
+import UseInitAuth from "@/hooks/useInitAuth";
 
 type MusicLayoutProps = {
   children: React.ReactNode;
 };
 
 const MusicLayout = ({ children }: MusicLayoutProps) => {
+  UseInitAuth();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
 

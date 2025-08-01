@@ -10,6 +10,7 @@ import {
 import { TrackType } from "@/sharedTypes/types";
 import { formatTime } from "@utils/helper";
 import classNames from "classnames";
+import { useLikeTrack } from "@/hooks/useLikeTracks";
 
 type TrackProps = {
   track: TrackType;
@@ -21,6 +22,8 @@ const Track = ({ track, playList }: TrackProps) => {
   const isPlaying = useAppSelector(
     (state) => state.tracks.currentTrack.isPlaying
   );
+
+  const { toggleLike, isLike } = useLikeTrack(track);
 
   const currentTrack = useAppSelector(
     (state) => state.tracks.currentTrack.track
@@ -69,8 +72,18 @@ const Track = ({ track, playList }: TrackProps) => {
           </Link>
         </div>
         <div className={styles.track__time}>
-          <svg className={styles.track__timeSvg}>
-            <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
+          <svg
+            className={styles.track__timeSvg}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleLike();
+            }}
+          >
+            <use
+              xlinkHref={`/img/icon/sprite.svg#icon-${
+                isLike ? "like" : "dislike"
+              }`}
+            ></use>
           </svg>
           <span className={styles.track__timeText}>
             {formatTime(track.duration_in_seconds)}
