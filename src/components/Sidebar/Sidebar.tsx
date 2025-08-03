@@ -14,10 +14,6 @@ const Bar = () => {
   const userName = useAppSelector((state) => state.auth.userName);
 
   const handleLogout = () => {
-    // localStorage.removeItem("email");
-    // localStorage.removeItem("username");
-    // localStorage.removeItem("_id");
-    // localStorage.removeItem("token");
     dispatch(clearUser());
     router.push("/auth/signin");
   };
@@ -25,7 +21,7 @@ const Bar = () => {
   return (
     <div className={styles.main__sidebar}>
       <div className={styles.sidebar__personal}>
-        <div onClick={handleLogout}>
+        <div className={styles.sidebar__upperblock} onClick={handleLogout}>
           <p className={styles.sidebar__personalName}>{userName}</p>
           <div className={styles.sidebar__icon}>
             <svg>

@@ -24,11 +24,11 @@ export const useLikeTrack = (track: TrackType | null): returnTypeHook => {
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const toggleLike = () => {
+    console.log("accessToken", accessToken);
     if (!accessToken) {
       return setErrorMsg("Нет авторизации");
     }
 
-    console.log("track ", track);
     const actionApi = isLike ? removeLike : addLike;
     const actionSlice = isLike ? removeLikedTracks : addLikedTracks;
 

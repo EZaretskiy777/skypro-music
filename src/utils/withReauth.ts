@@ -10,10 +10,8 @@ export const withReauth = async <T>(
 ): Promise<T> => {
   try {
     // Пытаемся выполнить запрос
-    console.log("apiFunction", apiFunction);
     return await apiFunction("");
   } catch (error) {
-    console.log("apiFunction2", apiFunction);
     const axiosError = error as AxiosError;
 
     // Если ошибка 401, обновляем токен и повторяем запрос
