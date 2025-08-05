@@ -22,7 +22,9 @@ const MusicLayout = ({ children }: MusicLayoutProps) => {
   UseInitAuth();
   const dispatch = useAppDispatch();
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingFavorites, setIsLoadingFavorites] = useState(true);
+  const [isLoadingFavorites, setIsLoadingFavorites] = useState(
+    accessToken ? true : false
+  );
 
   useEffect(() => {
     const fetchTracks = async () => {
