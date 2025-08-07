@@ -23,6 +23,8 @@ const Track = ({ track, playList }: TrackProps) => {
     (state) => state.tracks.currentTrack.isPlaying
   );
 
+  const { accessToken } = useAppSelector((state) => state.auth);
+
   const { toggleLike, isLike } = useLikeTrack(track);
 
   const currentTrack = useAppSelector(
@@ -34,6 +36,14 @@ const Track = ({ track, playList }: TrackProps) => {
   const handlerClickCurrentTrack = () => {
     dispatch(setCurrentTrack(track));
     dispatch(setCurrentPlaylist(playList));
+  };
+
+  const likeIcon = () => {
+    if (!accessToken) {
+      return "dislike-notauth";
+    } else {
+      return isLike ? "like" : "dislike";
+    }
   };
 
   return (
@@ -51,7 +61,7 @@ const Track = ({ track, playList }: TrackProps) => {
               />
             ) : (
               <svg className={styles.track__titleSvg}>
-                <use xlinkHref={`/img/icon/sprite.svg#icon-note`}></use>
+                <use xlinkHref={`/img/icon/sprite_2.svg#icon-note`}></use>
               </svg>
             )}
           </div>
@@ -79,11 +89,7 @@ const Track = ({ track, playList }: TrackProps) => {
               toggleLike();
             }}
           >
-            <use
-              xlinkHref={`/img/icon/sprite.svg#icon-${
-                isLike ? "like" : "dislike"
-              }`}
-            ></use>
+            <use href={`/img/icon/sprite_2.svg#icon-${likeIcon()}`}></use>
           </svg>
           <span className={styles.track__timeText}>
             {formatTime(track.duration_in_seconds)}

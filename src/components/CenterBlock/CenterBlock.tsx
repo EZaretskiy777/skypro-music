@@ -15,7 +15,7 @@ const CenterBlock = ({ header, selectionId }: CenterBlockProps) => {
     <div className={styles.centerblock}>
       <div className={styles.centerblock__search}>
         <svg className={styles.search__svg}>
-          <use xlinkHref="/img/icon/sprite.svg#icon-search"></use>
+          <use xlinkHref="/img/icon/sprite_2.svg#icon-search"></use>
         </svg>
         <input
           className={styles.search__text}
@@ -39,7 +39,7 @@ const CenterBlock = ({ header, selectionId }: CenterBlockProps) => {
           </div>
           <div className={classNames(styles.playlistTitle__col, styles.col04)}>
             <svg className={styles.playlistTitle__svg}>
-              <use xlinkHref="/img/icon/sprite.svg#icon-watch"></use>
+              <use xlinkHref="/img/icon/sprite_2.svg#icon-watch"></use>
             </svg>
           </div>
         </div>
