@@ -55,7 +55,7 @@ const trackSlice = createSlice({
       state.favoriteTracks = action.payload;
     },
     addLikedTracks(state, action: PayloadAction<TrackType>) {
-      state.favoriteTracks = [...state.favoriteTracks, action.payload]; 
+      state.favoriteTracks = [...state.favoriteTracks, action.payload];
     },
     removeLikedTracks(state, action: PayloadAction<TrackType>) {
       state.favoriteTracks = state.favoriteTracks.filter(
@@ -104,6 +104,12 @@ const trackSlice = createSlice({
     toggleShuffle: (state) => {
       state.isShuffle = !state.isShuffle;
     },
+    setFetchError: (
+      state: TrackState,
+      action: PayloadAction<string | null>
+    ) => {
+      state.fetchError = action.payload;
+    },
   },
 });
 
@@ -120,5 +126,6 @@ export const {
   setFavoriteTracks,
   addLikedTracks,
   removeLikedTracks,
+  setFetchError,
 } = trackSlice.actions;
 export const trackSliceReducer = trackSlice.reducer;

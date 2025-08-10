@@ -114,7 +114,6 @@ const Bar = () => {
 
   const onVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value) / 100;
-    console.log(newVolume);
     setVolume(newVolume);
     if (audioRef.current) {
       audioRef.current.volume = newVolume;
@@ -163,7 +162,6 @@ const Bar = () => {
         loop={isLoop}
         autoPlay
         onTimeUpdate={onTimeUpdate}
-        // controls
         onLoadedMetadata={onLoadedMetadata}
         onEnded={nextTrack}
       ></audio>
