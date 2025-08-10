@@ -13,6 +13,8 @@ import {
 } from "@/store/features/trackSlice";
 import { getTimePanel } from "@utils/helper";
 import ProgressBar from "../ProgressBar/ProgressBar";
+import { useLikeTrack } from "@/hooks/useLikeTracks";
+import { TrackType } from "@/sharedTypes/types";
 
 const Bar = () => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -30,6 +32,10 @@ const Bar = () => {
   const currentTrack = useAppSelector(
     (state) => state.tracks.currentTrack.track
   );
+
+  const { accessToken } = useAppSelector((state) => state.auth);
+
+  const { toggleLike, isLike } = useLikeTrack(currentTrack);
 
   useEffect(() => {
     setLoadedTrack(false);
@@ -141,6 +147,14 @@ const Bar = () => {
     dispatch(toggleShuffle());
   };
 
+  const likeIcon = () => {
+    if (!accessToken) {
+      return "dislike-notauth";
+    } else {
+      return isLike ? "like" : "dislike";
+    }
+  };
+
   return (
     <>
       <audio
@@ -167,7 +181,7 @@ const Bar = () => {
               <div className={styles.player__controls}>
                 <div className={styles.player__btnPrev} onClick={prevTrack}>
                   <svg className={styles.player__btnPrevSvg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-prev"></use>
+                    <use xlinkHref="/img/icon/sprite_2.svg#icon-prev"></use>
                   </svg>
                 </div>
                 <div
@@ -176,7 +190,7 @@ const Bar = () => {
                 >
                   <svg className={styles.player__btnPlaySvg}>
                     <use
-                      xlinkHref={`/img/icon/sprite.svg#icon-${
+                      xlinkHref={`/img/icon/sprite_2.svg#icon-${
                         isPlaying ? "pause" : "play"
                       }`}
                     ></use>
@@ -184,7 +198,7 @@ const Bar = () => {
                 </div>
                 <div className={styles.player__btnNext} onClick={nextTrack}>
                   <svg className={styles.player__btnNextSvg}>
-                    <use xlinkHref="/img/icon/sprite.svg#icon-next"></use>
+                    <use xlinkHref="/img/icon/sprite_2.svg#icon-next"></use>
                   </svg>
                 </div>
                 <div
@@ -199,7 +213,7 @@ const Bar = () => {
                       [styles.player__btnRepeat_on]: isLoop,
                     })}
                   >
-                    <use xlinkHref="/img/icon/sprite.svg#icon-repeat"></use>
+                    <use xlinkHref="/img/icon/sprite_2.svg#icon-repeat"></use>
                   </svg>
                 </div>
                 <div
@@ -214,7 +228,7 @@ const Bar = () => {
                       [styles.player__btnShuffle_on]: isShuffled,
                     })}
                   >
-                    <use xlinkHref="/img/icon/sprite.svg#icon-shuffle"></use>
+                    <use xlinkHref="/img/icon/sprite_2.svg#icon-shuffle"></use>
                   </svg>
                 </div>
               </div>
@@ -223,7 +237,7 @@ const Bar = () => {
                 <div className={styles.trackPlay__contain}>
                   <div className={styles.trackPlay__image}>
                     <svg className={styles.trackPlay__svg}>
-                      <use xlinkHref="/img/icon/sprite.svg#icon-note"></use>
+                      <use xlinkHref="/img/icon/sprite_2.svg#icon-note"></use>
                     </svg>
                   </div>
                   <div className={styles.trackPlay__author}>
@@ -238,17 +252,7 @@ const Bar = () => {
                   </div>
                 </div>
 
-                <div className={styles.trackPlay__dislike}>
-                  <div
-                    className={classNames(
-                      styles.player__btnShuffle,
-                      styles.btnIcon
-                    )}
-                  >
-                    <svg className={styles.trackPlay__likeSvg}>
-                      <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
-                    </svg>
-                  </div>
+                <div className={styles.trackPlay__dislike} onClick={toggleLike}>
                   <div
                     className={classNames(
                       styles.trackPlay__dislike,
@@ -256,7 +260,9 @@ const Bar = () => {
                     )}
                   >
                     <svg className={styles.trackPlay__dislikeSvg}>
-                      <use xlinkHref="/img/icon/sprite.svg#icon-dislike"></use>
+                      <use
+                        xlinkHref={`/img/icon/sprite_2.svg#icon-${likeIcon()}`}
+                      ></use>
                     </svg>
                   </div>
                 </div>
@@ -270,7 +276,7 @@ const Bar = () => {
                 <div className={styles.volume__content}>
                   <div className={styles.volume__image}>
                     <svg className={styles.volume__svg}>
-                      <use xlinkHref="/img/icon/sprite.svg#icon-volume"></use>
+                      <use xlinkHref="/img/icon/sprite_2.svg#icon-volume"></use>
                     </svg>
                   </div>
                   <div

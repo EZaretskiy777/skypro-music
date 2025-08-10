@@ -10,6 +10,7 @@ import {
 import { TrackType } from "@/sharedTypes/types";
 import { formatTime } from "@utils/helper";
 import classNames from "classnames";
+import { useLikeTrack } from "@/hooks/useLikeTracks";
 
 type TrackProps = {
   track: TrackType;
@@ -22,6 +23,10 @@ const Track = ({ track, playList }: TrackProps) => {
     (state) => state.tracks.currentTrack.isPlaying
   );
 
+  const { accessToken } = useAppSelector((state) => state.auth);
+
+  const { toggleLike, isLike } = useLikeTrack(track);
+
   const currentTrack = useAppSelector(
     (state) => state.tracks.currentTrack.track
   );
@@ -31,6 +36,14 @@ const Track = ({ track, playList }: TrackProps) => {
   const handlerClickCurrentTrack = () => {
     dispatch(setCurrentTrack(track));
     dispatch(setCurrentPlaylist(playList));
+  };
+
+  const likeIcon = () => {
+    if (!accessToken) {
+      return "dislike-notauth";
+    } else {
+      return isLike ? "like" : "dislike";
+    }
   };
 
   return (
@@ -48,7 +61,7 @@ const Track = ({ track, playList }: TrackProps) => {
               />
             ) : (
               <svg className={styles.track__titleSvg}>
-                <use xlinkHref={`/img/icon/sprite.svg#icon-note`}></use>
+                <use xlinkHref={`/img/icon/sprite_2.svg#icon-note`}></use>
               </svg>
             )}
           </div>
@@ -69,8 +82,14 @@ const Track = ({ track, playList }: TrackProps) => {
           </Link>
         </div>
         <div className={styles.track__time}>
-          <svg className={styles.track__timeSvg}>
-            <use xlinkHref="/img/icon/sprite.svg#icon-like"></use>
+          <svg
+            className={styles.track__timeSvg}
+            onClick={(e) => {
+              e.stopPropagation();
+              toggleLike();
+            }}
+          >
+            <use href={`/img/icon/sprite_2.svg#icon-${likeIcon()}`}></use>
           </svg>
           <span className={styles.track__timeText}>
             {formatTime(track.duration_in_seconds)}

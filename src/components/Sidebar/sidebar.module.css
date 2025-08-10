@@ -19,6 +19,12 @@
   padding: 12px 0 15px 0;
 }
 
+.sidebar__upperblock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
 .sidebar__personalName {
   font-style: normal;
   font-weight: 400;
