@@ -25,7 +25,7 @@ const Bar = () => {
           <p className={styles.sidebar__personalName}>{userName}</p>
           <div className={styles.sidebar__icon}>
             <svg>
-              <use xlinkHref="/img/icon/sprite_2.svg#logout"></use>
+              <use xlinkHref="/img/icon/sprite_3.svg#logout"></use>
             </svg>
           </div>
         </div>

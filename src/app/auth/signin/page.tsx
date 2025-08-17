@@ -63,10 +63,8 @@ export default function Signin() {
             setErrorMessage(error.response?.data?.message);
           }
           if (error.request) {
-            console.error("Ошибка запроса:", error.request);
-            setErrorMessage(
-              "Отсутствует ответ от сервера. Пожалуйста, проверьте подключение к интернету."
-            );
+            console.error("Ошибка запроса:", error.message);
+            setErrorMessage(error.response?.data.message);
           } else {
             console.error("Ошибка настройки:", error.message);
             setErrorMessage("Произошла неизвестная ошибка, попробуйте позже.");

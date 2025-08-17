@@ -61,7 +61,7 @@ const Track = ({ track, playList }: TrackProps) => {
               />
             ) : (
               <svg className={styles.track__titleSvg}>
-                <use xlinkHref={`/img/icon/sprite_2.svg#icon-note`}></use>
+                <use xlinkHref={`/img/icon/sprite_3.svg#icon-note`}></use>
               </svg>
             )}
           </div>
@@ -89,7 +89,7 @@ const Track = ({ track, playList }: TrackProps) => {
               toggleLike();
             }}
           >
-            <use href={`/img/icon/sprite_2.svg#icon-${likeIcon()}`}></use>
+            <use href={`/img/icon/sprite_3.svg#icon-${likeIcon()}`}></use>
           </svg>
           <span className={styles.track__timeText}>
             {formatTime(track.duration_in_seconds)}
