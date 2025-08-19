@@ -40,7 +40,7 @@ const initialState: TrackState = {
   filters: { query: "", artists: [], years: [], genres: [] },
 };
 
-const trackSlice = createSlice({
+export const trackSlice = createSlice({
   name: "tracks",
   initialState,
   reducers: {
