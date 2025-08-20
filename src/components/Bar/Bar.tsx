@@ -14,7 +14,6 @@ import {
 import { getTimePanel } from "@utils/helper";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import { useLikeTrack } from "@/hooks/useLikeTracks";
-import { TrackType } from "@/sharedTypes/types";
 
 const Bar = () => {
   const [currentTime, setCurrentTime] = useState(0);
@@ -114,7 +113,6 @@ const Bar = () => {
 
   const onVolumeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newVolume = parseFloat(event.target.value) / 100;
-    console.log(newVolume);
     setVolume(newVolume);
     if (audioRef.current) {
       audioRef.current.volume = newVolume;
@@ -163,7 +161,6 @@ const Bar = () => {
         loop={isLoop}
         autoPlay
         onTimeUpdate={onTimeUpdate}
-        // controls
         onLoadedMetadata={onLoadedMetadata}
         onEnded={nextTrack}
       ></audio>
@@ -181,7 +178,7 @@ const Bar = () => {
               <div className={styles.player__controls}>
                 <div className={styles.player__btnPrev} onClick={prevTrack}>
                   <svg className={styles.player__btnPrevSvg}>
-                    <use xlinkHref="/img/icon/sprite_2.svg#icon-prev"></use>
+                    <use xlinkHref="/img/icon/sprite_3.svg#icon-prev"></use>
                   </svg>
                 </div>
                 <div
@@ -190,7 +187,7 @@ const Bar = () => {
                 >
                   <svg className={styles.player__btnPlaySvg}>
                     <use
-                      xlinkHref={`/img/icon/sprite_2.svg#icon-${
+                      xlinkHref={`/img/icon/sprite_3.svg#icon-${
                         isPlaying ? "pause" : "play"
                       }`}
                     ></use>
@@ -198,7 +195,7 @@ const Bar = () => {
                 </div>
                 <div className={styles.player__btnNext} onClick={nextTrack}>
                   <svg className={styles.player__btnNextSvg}>
-                    <use xlinkHref="/img/icon/sprite_2.svg#icon-next"></use>
+                    <use xlinkHref="/img/icon/sprite_3.svg#icon-next"></use>
                   </svg>
                 </div>
                 <div
@@ -213,7 +210,7 @@ const Bar = () => {
                       [styles.player__btnRepeat_on]: isLoop,
                     })}
                   >
-                    <use xlinkHref="/img/icon/sprite_2.svg#icon-repeat"></use>
+                    <use xlinkHref="/img/icon/sprite_3.svg#icon-repeat"></use>
                   </svg>
                 </div>
                 <div
@@ -228,7 +225,7 @@ const Bar = () => {
                       [styles.player__btnShuffle_on]: isShuffled,
                     })}
                   >
-                    <use xlinkHref="/img/icon/sprite_2.svg#icon-shuffle"></use>
+                    <use xlinkHref="/img/icon/sprite_3.svg#icon-shuffle"></use>
                   </svg>
                 </div>
               </div>
@@ -237,7 +234,7 @@ const Bar = () => {
                 <div className={styles.trackPlay__contain}>
                   <div className={styles.trackPlay__image}>
                     <svg className={styles.trackPlay__svg}>
-                      <use xlinkHref="/img/icon/sprite_2.svg#icon-note"></use>
+                      <use xlinkHref="/img/icon/sprite_3.svg#icon-note"></use>
                     </svg>
                   </div>
                   <div className={styles.trackPlay__author}>
@@ -261,7 +258,7 @@ const Bar = () => {
                   >
                     <svg className={styles.trackPlay__dislikeSvg}>
                       <use
-                        xlinkHref={`/img/icon/sprite_2.svg#icon-${likeIcon()}`}
+                        xlinkHref={`/img/icon/sprite_3.svg#icon-${likeIcon()}`}
                       ></use>
                     </svg>
                   </div>
@@ -276,7 +273,7 @@ const Bar = () => {
                 <div className={styles.volume__content}>
                   <div className={styles.volume__image}>
                     <svg className={styles.volume__svg}>
-                      <use xlinkHref="/img/icon/sprite_2.svg#icon-volume"></use>
+                      <use xlinkHref="/img/icon/sprite_3.svg#icon-volume"></use>
                     </svg>
                   </div>
                   <div

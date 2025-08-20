@@ -1,13 +1,6 @@
 import axios from "axios";
 import { BASE_URL } from "../constants";
 
-// type AuthUserType = {
-//   email: string;
-//   password: string;
-//   _id: number;
-//   status: string;
-// };
-
 export const urerSignIn = ({
   email,
   password,
